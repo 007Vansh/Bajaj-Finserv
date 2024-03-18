@@ -10,21 +10,19 @@ app
   })
   .post((req, res) => {
     const data = req.body.data || [];
-    const numbers = [];
+    const odd = [];
+    const even= [];
     const alphabets = [];
-    let highest_alphabet = "";
+    
 
     for (const item of data) {
       if (!isNaN(item)) {
-        numbers.push(item);
+        if((item)%2==0){
+          odd.push(item);
+        }else{
+          even.push(item);
       } else if (item.length === 1 && isNaN(item)) {
         alphabets.push(item);
-        if (
-          !highest_alphabet ||
-          item.toUpperCase() > highest_alphabet.toUpperCase()
-        ) {
-          highest_alphabet = item;
-        }
       }
     }
 
@@ -33,9 +31,9 @@ app
       user_id: "Vansh_110203",
       email: "vansh2124.be21@chitkara.edu.in",
       roll_number: "2110992124",
-      numbers: numbers,
+      odd_numbers: odd,
+      even_numbers: even,
       alphabets: alphabets,
-      highest_alphabet: highest_alphabet ? [highest_alphabet] : [],
     });
   });
 
